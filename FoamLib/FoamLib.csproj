@@ -1,14 +1,14 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>43287d2c-a1be-4cc4-a886-ff76fbb25c20</ProjectGuid>
+    <ProjectGuid>{43287D2C-A1BE-4CC4-A886-FF76FBB25C20}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>FoamLib</RootNamespace>
-    <AssemblyName>FoamLib</AssemblyName>
+    <AssemblyName>Fqh.FoamLib</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -30,24 +30,307 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="System"/>
-    
-    <Reference Include="System.Core"/>
-    <Reference Include="System.Xml.Linq"/>
-    <Reference Include="System.Data.DataSetExtensions"/>
-    
-    
-    <Reference Include="Microsoft.CSharp"/>
-    
-    <Reference Include="System.Data"/>
-    
-    <Reference Include="System.Net.Http"/>
-    
-    <Reference Include="System.Xml"/>
+    <Reference Include="AnyCAD.Foundation.Net">
+      <HintPath>..\..\AnyCADSdk\AnyCAD.Foundation.Net.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.mummy.Runtime">
+      <HintPath>..\..\activizdotnet-711\bin\Kitware.mummy.Runtime.dll</HintPath>
+    </Reference>
+    <Reference Include="Kitware.VTK">
+      <HintPath>..\..\activizdotnet-711\bin\Kitware.VTK.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Drawing.Design" />
+    <Reference Include="System.IO.Compression" />
+    <Reference Include="System.IO.Compression.FileSystem" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="IO\CommonPatch.cs" />
+    <Compile Include="IO\FoamConst.cs" />
+    <Compile Include="IO\FoamDictionary.cs" />
+    <Compile Include="IO\FoamDictionaryFile.cs" />
+    <Compile Include="IO\FoamDictionaryListFile.cs" />
+    <Compile Include="IO\FoamFile.cs" />
+    <Compile Include="IO\IMonitor.cs" />
+    <Compile Include="IO\UniformValue.cs" />
+    <Compile Include="Model\AdiabatWall.cs" />
+    <Compile Include="Model\Boundary.cs" />
+    <Compile Include="Model\Case.cs" />
+    <Compile Include="Model\CaseState.cs" />
+    <Compile Include="Model\CfMesh\CfMeshReader.cs" />
+    <Compile Include="Model\CfMesh\CfMeshWriter.cs" />
+    <Compile Include="Model\CfMesh\Cone.cs" />
+    <Compile Include="Model\CfMesh\ModelList.cs" />
+    <Compile Include="Model\CfMesh\Sphere.cs" />
+    <Compile Include="Model\CfMesh\Box.cs" />
+    <Compile Include="Model\CfMesh\CfMeshDict.cs" />
+    <Compile Include="Model\CfMesh\AnalyticGeometry.cs" />
+    <Compile Include="Model\CfMesh\GlobalGeometryObject.cs" />
+    <Compile Include="Model\CfMesh\SurfaceFileUtil.cs" />
+    <Compile Include="Model\ControlFunction.cs" />
+    <Compile Include="Model\EntryOption.cs" />
+    <Compile Include="Model\Field.cs" />
+    <Compile Include="Model\FieldValues.cs" />
+    <Compile Include="Model\Gas.cs" />
+    <Compile Include="Model\GlobalModelObject.cs" />
+    <Compile Include="Model\GlobalParameters.cs" />
+    <Compile Include="Model\LadleGeometry.cs" />
+    <Compile Include="Model\HeatFluxWall.cs" />
+    <Compile Include="Model\HeatTransferWall.cs" />
+    <Compile Include="Model\IBoundaryObject.cs" />
+    <Compile Include="Model\IFoamObject.cs" />
+    <Compile Include="Model\InternalField.cs" />
+    <Compile Include="Model\Mixing.cs" />
+    <Compile Include="Model\MoltenSteel.cs" />
+    <Compile Include="Model\OperationCondition.cs" />
+    <Compile Include="Model\OtherOptions.cs" />
+    <Compile Include="Model\Phase.cs" />
+    <Compile Include="Model\PhaseInterfacial.cs" />
+    <Compile Include="Model\Phases.cs" />
+    <Compile Include="Model\Pimple.cs" />
+    <Compile Include="Model\Plug.cs" />
+    <Compile Include="Model\PorousPlug.cs" />
+    <Compile Include="Model\PowerWall.cs" />
+    <Compile Include="Model\ProbeMonitor.cs" />
+    <Compile Include="Model\SlitPlug.cs" />
+    <Compile Include="Model\SolveControl.cs" />
+    <Compile Include="Model\SolveMonitor.cs" />
+    <Compile Include="Model\Symmetry.cs" />
+    <Compile Include="Model\TemperatureWall.cs" />
+    <Compile Include="Model\Upface.cs" />
+    <Compile Include="Model\Vector.cs" />
+    <Compile Include="Model\Wall.cs" />
+    <Compile Include="Model\WallLayer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AnalyticGeometryControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\AnalyticGeometryControl.Designer.cs">
+      <DependentUpon>AnalyticGeometryControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AnalyticGeometryForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\AnalyticGeometryForm.Designer.cs">
+      <DependentUpon>AnalyticGeometryForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Post\Display\SphereUnit.cs" />
+    <Compile Include="UI\Post\Display\GeometryUnit.cs" />
+    <Compile Include="UI\Post\Model\PressureDropProperty.cs" />
+    <Compile Include="UI\RefineObjectListEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\RefineObjectListEditControl.Designer.cs">
+      <DependentUpon>RefineObjectListEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CfMeshPlane.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CfMeshPlane.Designer.cs">
+      <DependentUpon>CfMeshPlane.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\CheckableParameterTextBox.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\CheckableParameterTextBox.Designer.cs">
+      <DependentUpon>CheckableParameterTextBox.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\AnalyticGeometryEditor.cs" />
+    <Compile Include="UI\CustomListEditor.cs" />
+    <Compile Include="UI\DictionaryChooseEditor.cs" />
+    <Compile Include="UI\FieldNameStringConvertor.cs" />
+    <Compile Include="UI\MaterialEditControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MaterialEditControl.Designer.cs">
+      <DependentUpon>MaterialEditControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\RefineObjectListEdit.cs" />
+    <Compile Include="UI\Post\Controls\GeometryMeshViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Post\Controls\PostTreeView.cs" />
+    <Compile Include="UI\Post\Controls\Viewer.cs" />
+    <Compile Include="UI\Post\Display\DatasetUnit.cs" />
+    <Compile Include="UI\Post\Controls\FoamDataViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\Post\Controls\FoamDataViewer.Designer.cs">
+      <DependentUpon>FoamDataViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\Post\Display\BoxUnit.cs" />
+    <Compile Include="UI\Post\Display\InternalMeshUnit.cs" />
+    <Compile Include="UI\Post\Display\MeshUnit.cs" />
+    <Compile Include="UI\Post\Display\PatchMeshUnit.cs" />
+    <Compile Include="UI\Post\Display\StlUnit.cs" />
+    <Compile Include="UI\Post\Display\Unit.cs" />
+    <Compile Include="UI\Post\Model\CutterUnitProprety.cs" />
+    <Compile Include="UI\Post\Model\PostDesc.cs" />
+    <Compile Include="UI\Post\Model\DatasetUnitProperty.cs" />
+    <Compile Include="UI\Post\Util\FoamUnitManager.cs" />
+    <Compile Include="UI\Post\Display\InternalUnit.cs" />
+    <Compile Include="UI\Post\Display\PatchUnit.cs" />
+    <Compile Include="UI\Post\Display\CutUnit.cs" />
+    <Compile Include="UI\Post\Util\FoamUnitReader.cs" />
+    <Compile Include="UI\Post\Util\StlUnitReader.cs" />
+    <Compile Include="UI\Post\Util\UnitReader.cs" />
+    <Compile Include="UI\SurfacePartNameConverter.cs" />
+    <Compile Include="UI\PatchNameConverter.cs" />
+    <Compile Include="UI\SingleFileChooseEditor.cs" />
+    <Compile Include="UI\SingleSurfacePartChooseEditor.cs" />
+    <Compile Include="UI\PatchSelectEditor.cs" />
+    <Compile Include="UI\SurfacePartChooseEditor.cs" />
+    <Compile Include="UI\FileChooseEditor.cs" />
+    <Compile Include="UI\FieldChooseEditor.cs" />
+    <Compile Include="UI\FoamMeshViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\FoamMeshViewer.Designer.cs">
+      <DependentUpon>FoamMeshViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GeometryViewer.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\GeometryViewer.Designer.cs">
+      <DependentUpon>GeometryViewer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\GeometryViewForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\GeometryViewForm.Designer.cs">
+      <DependentUpon>GeometryViewForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MeshTreeView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MeshTreeView.Designer.cs">
+      <DependentUpon>MeshTreeView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MonitorChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\MonitorChart.Designer.cs">
+      <DependentUpon>MonitorChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\MultilineTextEditor.cs" />
+    <Compile Include="UI\ResidualErrorChart.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UI\ResidualErrorChart.Designer.cs">
+      <DependentUpon>ResidualErrorChart.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UI\SetupDlg.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UI\SetupDlg.Designer.cs">
+      <DependentUpon>SetupDlg.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Util\BinSerializerTool.cs" />
+    <Compile Include="Util\ColorPool.cs" />
+    <Compile Include="Util\ConfigIO.cs" />
+    <Compile Include="Util\EnvironmentItem.cs" />
+    <Compile Include="Util\CcmMeshConvertor.cs" />
+    <Compile Include="Util\FluentMeshConvertor.cs" />
+    <Compile Include="Util\FoamMeshVerifier.cs" />
+    <Compile Include="Util\FoamRunner.cs" />
+    <Compile Include="Util\FoamTask.cs" />
+    <Compile Include="Util\GeometryWriter.cs" />
+    <Compile Include="Util\GlobalConfig.cs" />
+    <Compile Include="Util\IoUtil.cs" />
+    <Compile Include="Util\LflowMsgManager.cs" />
+    <Compile Include="Util\MeshConvertorBase.cs" />
+    <Compile Include="Util\Message.cs" />
+    <Compile Include="Util\MessageManager.cs" />
+    <Compile Include="Util\ObjectCopier.cs" />
+    <Compile Include="Util\OpenSCadWriter.cs" />
+    <Compile Include="Util\PatchReader.cs" />
+    <Compile Include="Util\PolyMesh.cs" />
+    <Compile Include="Util\Runner.cs" />
+    <Compile Include="Util\SerializerToolBase.cs" />
+    <Compile Include="Util\StlTool.cs" />
+    <Compile Include="Util\SysEnvironment.cs" />
+    <Compile Include="Util\TaskEventArgs.cs" />
+    <Compile Include="Util\ToolStripItemManager.cs" />
+    <Compile Include="Util\XmlSerializerTool.cs" />
+    <Compile Include="Util\Zip.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AnalyticGeometryControl.resx">
+      <DependentUpon>AnalyticGeometryControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\AnalyticGeometryForm.resx">
+      <DependentUpon>AnalyticGeometryForm.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\RefineObjectListEditControl.resx">
+      <DependentUpon>RefineObjectListEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CfMeshPlane.resx">
+      <DependentUpon>CfMeshPlane.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\CheckableParameterTextBox.resx">
+      <DependentUpon>CheckableParameterTextBox.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\FoamMeshViewer.resx">
+      <DependentUpon>FoamMeshViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeometryViewer.resx">
+      <DependentUpon>GeometryViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\GeometryViewForm.resx">
+      <DependentUpon>GeometryViewForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MaterialEditControl.resx">
+      <DependentUpon>MaterialEditControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MeshTreeView.resx">
+      <DependentUpon>MeshTreeView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\MonitorChart.resx">
+      <DependentUpon>MonitorChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\Post\Controls\FoamDataViewer.resx">
+      <DependentUpon>FoamDataViewer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\ResidualErrorChart.resx">
+      <DependentUpon>ResidualErrorChart.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UI\SetupDlg.resx">
+      <DependentUpon>SetupDlg.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Add_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Delete_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save_16x16.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Copy_16x16.png" />
+  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
- </Project>
+</Project>
